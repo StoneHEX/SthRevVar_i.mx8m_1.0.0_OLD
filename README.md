@@ -11,15 +11,16 @@ E: meta-variscite-bsp-imx : provided a fixed version fron Stonehex repo ( this )
 
 ## Quick instructions:
 
-1: clone buildroot : <b>git clone --branch 2023.08.4 https://github.com/buildroot/buildroot.git</b><br>
+1: clone buildroot : <b>git clone https://github.com/buildroot/buildroot.git</b><br>
 2: download <b>var_reventon_br-2023.08.4_001.patch</b> from this repo<br>
 3: rename buildroot obtained directory in step 1 with the name you like and enter it<br>
-4: apply patch with <b>patch -p1 < ../var_reventon_br-2023.08.4_001.patch</b><br>
-5: configure with <b>make variscite_reventon_defconfig</b><br>
-6: make with <b>make</b><br>
+4: checkout branch 2023.08.4 : <b>git checkout 2023.08.4</b><br>
+5: apply patch with <b>patch -p1 < ../var_reventon_br-2023.08.4_001.patch</b><br>
+6: configure with <b>make variscite_reventon_defconfig</b><br>
+7: make with <b>make</b><br>
 ### WARNING : check your device is /dev/sdb , mksd.sh defaults to it so change it if different !!!
 ### WARNING : selecting the wrong device can destroy your hard disk
-7: create sd card with <b>mksd.sh</b><br>
+8: create sd card with <b>mksd.sh</b><br>
 
 ## Notes
 The packages are downloaded in the directory specified by buildroot configurations, default is /Devel/buildroot/Downloads.<br>
