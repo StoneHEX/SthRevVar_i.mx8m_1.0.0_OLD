@@ -1178,7 +1178,7 @@ index 0000000000..9450c13b13
 +CONFIG_MEMTEST=y
 diff --git a/board/stonehex/reventon/imx8m_var_reventon_bootloader-prepare.sh b/board/stonehex/reventon/imx8m_var_reventon_bootloader-prepare.sh
 new file mode 100755
-index 0000000000..aecdc96f20
+index 0000000000..af61a8c513
 --- /dev/null
 +++ b/board/stonehex/reventon/imx8m_var_reventon_bootloader-prepare.sh
 @@ -0,0 +1,69 @@
@@ -1190,7 +1190,7 @@ index 0000000000..aecdc96f20
 +UBOOT_PATH=$CURRENT/output/build/uboot-lf_v2023.04_var01
 +TOOLS_PATH=$CURRENT/board/stonehex/reventon
 +IMX_BOOT_TOOLS=imx-boot-tools
-+REV_PKG=SthRevVar_uboot_1.0.0
++REV_PKG=SthRevVar_i.mx8m_1.0.0 
 +cd $UBOOT_PATH
 +
 +if [ ! -d ${BR2_DL_DIR}/${REV_PKG} ]; then
@@ -1253,10 +1253,10 @@ index 0000000000..aecdc96f20
 +
 diff --git a/board/stonehex/reventon/imx8m_var_reventon_fs-prepare.sh b/board/stonehex/reventon/imx8m_var_reventon_fs-prepare.sh
 new file mode 100755
-index 0000000000..fcfbb5bb45
+index 0000000000..45ab53bd58
 --- /dev/null
 +++ b/board/stonehex/reventon/imx8m_var_reventon_fs-prepare.sh
-@@ -0,0 +1,9 @@
+@@ -0,0 +1,17 @@
 +#!/bin/bash
 +
 +echo "#### Reventon Carrier from Stonehex, starting customize fs ####"
@@ -1264,12 +1264,19 @@ index 0000000000..fcfbb5bb45
 +OVERLAY_PATH=$CURRENT/board/stonehex/reventon/overlay
 +ROOTFS_PATH=$CURRENT/output/target
 +cp -a ${OVERLAY_PATH}/* ${ROOTFS_PATH}
++IP=`hostname -I | awk '{print $1}'`
++echo "REFERENCE_SERVER=$IP" > ${ROOTFS_PATH}/etc/sysconfig/system_vars
++echo "BOOT_DEVICE=mmcblk1p1" >> ${ROOTFS_PATH}/etc/sysconfig/system_vars
++echo "KERNEL=Image" >> ${ROOTFS_PATH}/etc/sysconfig/system_vars
++echo "DTB=imx8mm-var-som-symphony.dtb" >> ${ROOTFS_PATH}/etc/sysconfig/system_vars
++echo "BOOTSCRIPT=boot.scr" >> ${ROOTFS_PATH}/etc/sysconfig/system_vars
++echo "FS=uInitrd" >> ${ROOTFS_PATH}/etc/sysconfig/system_vars
++
 +echo "#### Reventon Carrier from Stonehex, customize fs done ####"
 +
 diff --git a/board/stonehex/reventon/meta-variscite-bsp-imx.tar.bz2 b/board/stonehex/reventon/meta-variscite-bsp-imx.tar.bz2
 new file mode 100644
-index 0000000000..14dcd51ae5
-Binary files /dev/null and b/board/stonehex/reventon/meta-variscite-bsp-imx.tar.bz2 differ
+index 0000000000..e69de29bb2
 diff --git a/board/stonehex/reventon/overlay/bin/autologin.sh b/board/stonehex/reventon/overlay/bin/autologin.sh
 new file mode 100755
 index 0000000000..568f559e3d
