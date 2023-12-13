@@ -1178,10 +1178,10 @@ index 0000000000..9450c13b13
 +CONFIG_MEMTEST=y
 diff --git a/board/stonehex/reventon/imx8m_var_reventon_bootloader-prepare.sh b/board/stonehex/reventon/imx8m_var_reventon_bootloader-prepare.sh
 new file mode 100755
-index 0000000000..af61a8c513
+index 0000000000..dd04e918c3
 --- /dev/null
 +++ b/board/stonehex/reventon/imx8m_var_reventon_bootloader-prepare.sh
-@@ -0,0 +1,69 @@
+@@ -0,0 +1,72 @@
 +#!/bin/bash
 +
 +echo "#### Reventon Carrier from Stonehex, starting create image process ####"
@@ -1190,7 +1190,7 @@ index 0000000000..af61a8c513
 +UBOOT_PATH=$CURRENT/output/build/uboot-lf_v2023.04_var01
 +TOOLS_PATH=$CURRENT/board/stonehex/reventon
 +IMX_BOOT_TOOLS=imx-boot-tools
-+REV_PKG=SthRevVar_i.mx8m_1.0.0 
++REV_PKG=SthRevVar_i.mx8m_1.0.0
 +cd $UBOOT_PATH
 +
 +if [ ! -d ${BR2_DL_DIR}/${REV_PKG} ]; then
@@ -1199,7 +1199,10 @@ index 0000000000..af61a8c513
 +	git clone https://github.com/StoneHEX/${REV_PKG}.git
 +	popd
 +else
-+	echo "**** ${REV_PKG} present	****"
++	echo "**** ${REV_PKG} present,updating	****"
++	pushd ${BR2_DL_DIR}
++	git pull
++	popd
 +fi
 +if [ ! -d ${BR2_DL_DIR}/${REV_PKG} ]; then
 +	echo "**** ${REV_PKG} not found	****"
