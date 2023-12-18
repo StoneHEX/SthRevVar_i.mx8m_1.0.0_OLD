@@ -52,7 +52,7 @@ cp iMX8M/soc.mak ..
 cd ..
 echo "**************** ATF *********************"
 cd imx-atf 
-source $TOOLS_PATH/SourceMe64
+source ${CURRENT}/output/build/${REV_PKG}/SourceMe64
 unset LDFLAGS
 make PLAT=imx8mm bl31
 cp build/imx8mm/release/bl31.bin ..
