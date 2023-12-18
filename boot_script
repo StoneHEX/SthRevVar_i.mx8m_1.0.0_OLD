@@ -1,0 +1,8 @@
+fatload mmc 1:1 $fdt_addr imx8mm-var-som-symphony.dtb 
+fatload mmc 1:1 $loadaddr Image
+fatload mmc 1:1 $initrd_addr uInitrd
+setenv rdsize		"524288"
+setenv rootdev 		"/dev/ram rootwait rw"
+setenv bootargs console=${console} root=${rootdev} ramdisk_size=${rdsize}
+booti ${loadaddr} ${initrd_addr} ${fdt_addr}
+
