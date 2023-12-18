@@ -66,7 +66,7 @@ make -f soc.mak SOC=iMX8MM SOC_DIR=$IMX_BOOT_TOOLS dtbs="imx8mm-var-dart-customb
 echo "**************** FILE SYSTEM AND BOOT.SCR *********************"
 cd ${CURRENT}
 output/host/usr/bin/mkimage -A arm -O linux -T ramdisk -C none -n "uInitrd" -a 0x80000 -d output/images/rootfs.ext2.gz output/images/uInitrd
-output/host/usr/bin/mkimage -C none -A arm -T script -d $TOOLS_PATH/boot_script output/images/boot.scr
+output/host/usr/bin/mkimage -C none -A arm -T script -d ${BR2_DL_DIR}/${REV_PKG}/boot_script output/images/boot.scr
 echo "#### Reventon Carrier from Stonehex , image done ####"
 
 
