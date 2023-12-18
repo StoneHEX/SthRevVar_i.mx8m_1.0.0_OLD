@@ -1182,13 +1182,13 @@ index 0000000000..f085904569
 +
 diff --git a/configs/variscite_reventon_defconfig b/configs/variscite_reventon_defconfig
 new file mode 100644
-index 0000000000..371e8b42ff
+index 0000000000..62cd3d70ed
 --- /dev/null
 +++ b/configs/variscite_reventon_defconfig
 @@ -0,0 +1,3836 @@
 +#
 +# Automatically generated file; DO NOT EDIT.
-+# Buildroot 2023.08.4 Configuration
++# Buildroot 2023.08.4-dirty Configuration
 +#
 +BR2_HAVE_DOT_CONFIG=y
 +BR2_HOST_GCC_AT_LEAST_4_9=y
@@ -1659,7 +1659,7 @@ index 0000000000..371e8b42ff
 +BR2_ROOTFS_PRE_BUILD_SCRIPT=""
 +BR2_ROOTFS_POST_BUILD_SCRIPT="board/stonehex/reventon/sth_pkgs.sh"
 +BR2_ROOTFS_POST_FAKEROOT_SCRIPT=""
-+BR2_ROOTFS_POST_IMAGE_SCRIPT="output/build/SthFS_1.0.0/sthfs_fs-prepare.sh output/build/SthRevVar_i.mx8m_1.0.0/imx8m_var_reventon_bootloader-prepare.sh"
++BR2_ROOTFS_POST_IMAGE_SCRIPT="output/build/SthFS_1.0.0/sthfs_fs-prepare.sh output/build/SthRevVar_i.mx8m_1.0.0/imx8m_var_reventon_bootloader-prepare.sh output/build/SthRevVar_i.mx8m_1.0.0/post-image.sh"
 +BR2_ROOTFS_POST_SCRIPT_ARGS="${UBOOT_DIR}/arch/arm/dts/imx8mm-evk.dtb"
 +
 +#
